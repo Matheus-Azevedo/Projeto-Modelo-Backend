@@ -1,0 +1,30 @@
+# 2 containers
+# 1 - api container (nodejs)
+# 2 - db container (mysql2)
+
+version: '3'
+
+services:
+  api:
+    build: . # buildar a partir do Dockerfile
+    container_name: api-modelo
+    tty: true # container interativo
+    command: sh # shell pois nodejs não tem bash
+    working_dir: /app # pasta de trabalho
+    volumes: # mapeamento de volumes
+      - ./:/app # mapeia a pasta atual para a pasta de trabalho
+    ports: # mapeamento de portas
+      - 3001:3001 # mapeia a porta 3001 do host para a porta 3001 do container, 3001 é a porta padrão do nodejs
+    env_file:
+      - .env # arquivo de variáveis de ambiente
+    
+  database:
+    container_name: database-modelo
+    ports:
+      - 3306:3306 # mapeia a porta 3306 do host para a porta 3306 do container, 3306 é a porta padrão do mysql
+    image: mysql:8.0.32 # imagem do mysql
+    env_file:
+      - .env # arquivo de variáveis de ambiente
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} # variável de ambiente do mysql
+

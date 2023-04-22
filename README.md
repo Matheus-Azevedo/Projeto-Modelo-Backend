@@ -56,3 +56,7 @@ npx eslint --init: inicia as configurações do arquivo eslint
   WORKDIR /usr/src/app
   COPY package*.json /app
   RUN npm install --silent
+
+09. docker-compose.yml
+
+10. .env
