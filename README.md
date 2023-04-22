@@ -1,11 +1,16 @@
-COMANDOS:
+CONFIGURANDO O SETUP:
+
 01. Inicia o repositório:
 git init 
-02. Inicia o pacote Node
+
+02. Inicia o pacote Node:
 npm init -y
-03. Cria o gitignore
+
+03. Cria o gitignore:
 .gitignore
 04. Instalando dependências de desenvolvimento (-D):
+  npm i -D
+
   @types/express: fornece definições de tipo para o Express, um framework Node.js para criar aplicativos web.
 
   @types/jest: fornece definições de tipo para o Jest, um framework de testes para JavaScript.
@@ -21,3 +26,7 @@ npm init -y
   ts-node-dev: é uma ferramenta que reinicia automaticamente o servidor Node.js quando ocorre uma alteração no código.
 
   typescript: é um superset do JavaScript que adiciona tipos estáticos opcionais ao JavaScript.
+
+05: Inicia o typescript (as configurações default foram substituídas pelas que foram fornecidas pela TRYBE):
+npx tsc --init
+
