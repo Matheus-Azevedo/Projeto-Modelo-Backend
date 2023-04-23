@@ -1,63 +1,73 @@
-CONFIGURANDO O SETUP:
+# CONFIGURANDO O SETUP:
 
-01. Inicia o repositório:
-git init 
+## 1.  Inicie o repositório:
 
-02. Inicia o pacote Node:
-npm init -y
+  `git init` 
 
-03. Cria o gitignore:
-.gitignore
-04. Instalando dependências de desenvolvimento (-D):
-  npm i -D
+## 2.  Inicie o pacote Node:
 
-  @types/express: fornece definições de tipo para o Express, um framework Node.js para criar aplicativos web.
+  `npm init -y` 
 
-  @types/jest: fornece definições de tipo para o Jest, um framework de testes para JavaScript.
+## 3.  Crie o gitignore:
 
-  @types/supertest: fornece definições de tipo para o Supertest, uma biblioteca para testes de integração de API em Node.js.
+  `.gitignore` 
 
-  jest: é um framework de testes para JavaScript.
+## 4.  Instale as dependências de desenvolvimento (-D):
 
-  supertest: é uma biblioteca para testes de integração de API em Node.js.
+  `npm i -D` <br>
+  `@types/express` <br>
+  `@types/jest` <br>
+  `@types/supertest` <br>
+  `jest` <br>
+  `supertest` <br>
+  `vts-jest` <br>
+  `ts-node-dev` <br>
+  `typescript` <br>
 
-  ts-jest: é um pacote que permite executar testes do Jest com TypeScript.
+## 5.  Inicie o typescript (as configurações default foram substituídas pelas que foram fornecidas pela TRYBE):
 
-  ts-node-dev: é uma ferramenta que reinicia automaticamente o servidor Node.js quando ocorre uma alteração no código.
+  `npx tsc --init` 
 
-  typescript: é um superset do JavaScript que adiciona tipos estáticos opcionais ao JavaScript.
+## 6.  Adicione o Linter como dependência de desenvolvimento:
 
-05. Inicia o typescript (as configurações default foram substituídas pelas que foram fornecidas pela TRYBE):
-npx tsc --init
+  `npm i -D eslint` <br>
+  `npx eslint --init` <br>
 
-06. Linter como dependência de desenvolvimento:
-npm i -D eslint
-npx eslint --init: inicia as configurações do arquivo eslint
+As configurações adicionais fornecidas pela TRYBE: <br>
+  `npm i -D` <br>
+  `@typescript-eslint/eslint-plugin` <br>
+  `@typescript-eslint/parser` <br>
 
-  Configurações adicionais fornecidas pela TRYBE
-  npm i -D
-  @typescript-eslint/eslint-plugin 
-  @typescript-eslint/parser
+## 7.  Adicione os scripts (continuous integration -> ci):
 
-07. Adiciona os scripts (continuous integration -> ci):
-  "prebuild": "rm -rf ./dist",
-  "build": "tsc",
-  "postbuild": "cp ./src/database/*.sql ./dist/src/database/ && npm run create-views",
-  "test": "jest tests --runInBand --detectOpenHandles",
-  "test:unit": "jest tests/unit",
-  "test:integration": "jest tests/integration --runInBand ",
-  "lint": "eslint . --ext .ts",
-  "dev": "ts-node-dev src/server.ts",
-  "prestart": "npm run build",
-  "start": "node dist/src/server.js"
+  `"prebuild": "rm -rf ./dist",` <br>
+  `"build": "tsc",` <br>
+  `"postbuild": "cp ./src/database/*.sql ./dist/src/database/ && npm run create-views",` <br>
+  `"test": "jest tests --runInBand --detectOpenHandles",` <br>
+  `"test:unit": "jest tests/unit",` <br>
+  `"test:integration": "jest tests/integration --runInBand ",` <br>
+  `"lint": "eslint . --ext .ts",` <br>
+  `"dev": "ts-node-dev src/server.ts",` <br>
+  `"prestart": "npm run build",` <br>
+  `"start": "node dist/src/server.js"` <br>
 
-08. Dockerfile:
-  FROM node:16-apline
-  WORKDIR /usr/src/app
-  COPY package*.json /app
-  RUN npm install --silent
+## 8.  Crie o Dockerfile:
 
-09. docker-compose.yml
-docker compose up -d --build: por termos um Dockerfile usamos essa flag, que foi sinalizada no docker-compose
+  `FROM node:16-alpine` <br>
+  `WORKDIR /usr/src/app` <br>
+  `COPY package*.json /app` <br>
+  `RUN npm install --silent` <br>
 
-10. .env
+## 9.  Crie o docker-compose.yml
+
+  `docker compose up -d --build` 
+
+Por termos um Dockerfile usamos essa flag (build), que foi sinalizada no docker-compose.
+
+## 10.  Crie o arquivo .env.
+
+  `MYSQLUSER=root` <br>
+  `MYSQLPASSWORD=root` <br>
+  `MYSQL_ROOT_PASSWORD=root` <br>
+  `MYSQLPORT=3306` <br>
+  `MYSQLHOST=database` <br>
