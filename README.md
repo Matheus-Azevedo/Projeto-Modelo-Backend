@@ -58,5 +58,6 @@ npx eslint --init: inicia as configurações do arquivo eslint
   RUN npm install --silent
 
 09. docker-compose.yml
+docker compose up -d --build: por termos um Dockerfile usamos essa flag, que foi sinalizada no docker-compose
 
 10. .env

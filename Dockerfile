@@ -1,7 +1,9 @@
-FROM node:16-apline
+FROM node:16-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json /app
+
+COPY . .
 
 RUN npm install --silent
