@@ -10,6 +10,7 @@ services:
     container_name: api-modelo
     tty: true # container interativo
     command: sh # shell pois nodejs não tem bash
+    restart: always # reinicia o container sempre que ele parar
     working_dir: /app # pasta de trabalho
     volumes: # mapeamento de volumes
       - ./:/app # mapeia a pasta atual para a pasta de trabalho
@@ -17,9 +18,12 @@ services:
       - 3001:3001 # mapeia a porta 3001 do host para a porta 3001 do container, 3001 é a porta padrão do nodejs
     env_file:
       - .env # arquivo de variáveis de ambiente
-    
+    depends_on: # dependência do container
+      - database
+  
   database:
     container_name: database-modelo
+    restart: always
     ports:
       - 3306:3306 # mapeia a porta 3306 do host para a porta 3306 do container, 3306 é a porta padrão do mysql
     image: mysql:8.0.32 # imagem do mysql
